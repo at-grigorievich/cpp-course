@@ -1,0 +1,38 @@
+# Constants
+
+The following mathematical and logical constants\index{constants} are available:
+
+::: {.minipage data-latex="{\textwidth}"}
+| Constant | Value |
+| :------------- |:------------ |
+| E   | Euler's number (`2.71828182845904523536`) |
+| NAN | NaN (Not-a-Number) |
+| PI  | pi (`3.14159265358979323846`) |
+
+Table: Math Constants
+:::
+
+::: {.warningsection data-latex=""}
+If [`TE_FLOAT`](#te-float) is defined, then some precision for pi and Euler's number will be lost.
+:::
+
+::: {.minipage data-latex="{\textwidth}"}
+| Constant | Value |
+| :------------- |:------------ |
+| TRUE  | `1` |
+| FALSE | `0` |
+
+Table: Logical Constants
+:::
+
+The following number formats are supported:
+
+::: {.minipage data-latex="{\textwidth}"}
+| Format | Example |
+| :------------- |:------------ |
+| Decimal | `5754615` or `3.14` |
+| Hexadecimal\index{hexadecimal} | `0x57CEF7`, which yields `5754615` |
+| Scientific notation\index{scientific notation} | `1e3`, which yields `1000` |
+
+Table: Number Formats
+:::

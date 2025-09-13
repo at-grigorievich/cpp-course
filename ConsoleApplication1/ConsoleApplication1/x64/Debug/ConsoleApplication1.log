@@ -1,0 +1,11 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(524,5): warning MSB8004: каталог Output заканчивается не косой чертой.  Этот экземпляр сборки добавит косую черту, поскольку она необходима для правильного определения каталога Output.
+  ConsoleApplication1.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\bit(11): warning STL4038: The contents of <bit> are available only with C++20 or later.
+  SimpleCalculator.cpp
+  tinyexpr.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\bit(11): warning STL4038: The contents of <bit> are available only with C++20 or later.
+  TinyExprCalculator.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\bit(11): warning STL4038: The contents of <bit> are available only with C++20 or later.
+  Создание кода...
+  LINK : не найден или не выполнена сборка ..\packages\muparser.1.34\build\native\include\ConsoleApplication1.exe при последней инкрементной компоновке; выполняется полная компоновка
+  ConsoleApplication1.vcxproj -> D:\dev\cpp-course\ConsoleApplication1\packages\muparser.1.34\build\native\include\ConsoleApplication1.exe

@@ -1,0 +1,107 @@
+name: macOS Build & Unit Tests
+on: [push]
+
+jobs:
+  build:
+    name: unit-tests
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+          
+      - name: build & run tests
+        run: |
+             brew install grep
+             cd ..
+             git clone https://github.com/catchorg/Catch2.git
+             cd tinyexpr-plusplus/tests
+             cmake ./
+             make -j4
+             cd bin
+             ./TETestRunner --reporter JUnit::out=TE-junit.xml
+             cat TE-junit.xml
+             errors=$(cat TE-junit.xml | ggrep -Po '(errors)="\K[^"]*')
+             failures=$(cat TE-junit.xml | ggrep -Po '(failures)="\K[^"]*')
+             echo "Error count is: ${errors}"
+             echo "Failure count is: ${failures}"
+             if [ "$errors" -gt 0 ]; then
+               exit 1
+             fi
+             if [ "$failures" -gt 0 ]; then
+               exit 1
+             fi
+             
+             cd ..
+             cmake --build . --target clean
+             rm ./CMakeCache.txt
+             cmake -DTE_POW_FROM_RIGHT=1 ./
+             make -j4
+             cd bin
+             ./TETestRunner --reporter JUnit::out=TE-junit2.xml
+             cat TE-junit2.xml
+             errors=$(cat TE-junit2.xml | ggrep -Po '(errors)="\K[^"]*')
+             failures=$(cat TE-junit2.xml | ggrep -Po '(failures)="\K[^"]*')
+             echo "Error count is: ${errors}"
+             echo "Failure count is: ${failures}"
+             if [ "$errors" -gt 0 ]; then
+               exit 1
+             fi
+             if [ "$failures" -gt 0 ]; then
+               exit 1
+             fi
+
+             cd ..
+             cmake --build . --target clean
+             rm ./CMakeCache.txt
+             cmake -DTE_FLOAT=1 ./
+             make -j4
+             cd bin
+             ./TETestRunner --reporter JUnit::out=TE-junit2.xml
+             cat TE-junit2.xml
+             errors=$(cat TE-junit2.xml | ggrep -Po '(errors)="\K[^"]*')
+             failures=$(cat TE-junit2.xml | ggrep -Po '(failures)="\K[^"]*')
+             echo "Error count is: ${errors}"
+             echo "Failure count is: ${failures}"
+             if [ "$errors" -gt 0 ]; then
+               exit 1
+             fi
+             if [ "$failures" -gt 0 ]; then
+               exit 1
+             fi
+
+             cd ..
+             cmake --build . --target clean
+             rm ./CMakeCache.txt
+             cmake -DTE_LONG_DOUBLE=1 ./
+             make -j4
+             cd bin
+             ./TETestRunner --reporter JUnit::out=TE-junit2.xml
+             cat TE-junit2.xml
+             errors=$(cat TE-junit2.xml | ggrep -Po '(errors)="\K[^"]*')
+             failures=$(cat TE-junit2.xml | ggrep -Po '(failures)="\K[^"]*')
+             echo "Error count is: ${errors}"
+             echo "Failure count is: ${failures}"
+             if [ "$errors" -gt 0 ]; then
+               exit 1
+             fi
+             if [ "$failures" -gt 0 ]; then
+               exit 1
+             fi
+
+             cd ..
+             cmake --build . --target clean
+             rm ./CMakeCache.txt
+             cmake -DTE_BITWISE_OPERATORS=1 ./
+             make -j4
+             cd bin
+             ./TETestRunner --reporter JUnit::out=TE-junit2.xml
+             cat TE-junit2.xml
+             errors=$(cat TE-junit2.xml | ggrep -Po '(errors)="\K[^"]*')
+             failures=$(cat TE-junit2.xml | ggrep -Po '(failures)="\K[^"]*')
+             echo "Error count is: ${errors}"
+             echo "Failure count is: ${failures}"
+             if [ "$errors" -gt 0 ]; then
+               exit 1
+             fi
+             if [ "$failures" -gt 0 ]; then
+               exit 1
+             fi
