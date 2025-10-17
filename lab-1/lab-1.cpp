@@ -4,10 +4,18 @@
 #include <iostream>
 #include <locale>
 #include <windows.h>
+#include <string>
 
 struct Complex {
     double real;
     double imag;
+};
+
+struct Book {
+    std::string title; 
+    std::string author;
+    int year;          
+    double price;       
 };
 
 void temperatureExample();
@@ -24,13 +32,18 @@ void swapValues(int& a, int& b);
 void swapValues(int* a, int* b);
 void swapIntegers();
 
+void printBooks(Book* books, int size);
+void printExpensiveBook(Book* books, int size);
+void dynamicBookArray();
+
 int main()
 {
     setlocale(LC_ALL, "Russian");
     //temperatureExample();
     //manipulateString();
     //complexCalculate();
-    swapIntegers();
+    //swapIntegers();
+    dynamicBookArray();
 }
 
 void temperatureExample() {
@@ -163,19 +176,16 @@ void swapValuesForward(int a, int b) {
     a = b;
     b = buf;
 }
-
 void swapValues(int& a, int& b) {
     int buf = a;
     a = b;
     b = buf;
 }
-
 void swapValues(int* a, int* b) {
     int buf = *a;
     *a = *b;
     *b = buf;
 }
-
 void swapIntegers() {
     int a = 1;
     int b = 2;
@@ -188,4 +198,54 @@ void swapIntegers() {
 
     swapValues(&a, &b);
     std::cout << "После swapValues(a, b) (по указателю): a = " << a << ", b = " << b << "\n";
+}
+
+void printBooks(Book* books, int size) {
+    std::cout << "Список книг:" << std::endl;
+    for (int i = 0; i < size; i++) {
+        std::cout << i + 1 << ". \"" << books[i].title 
+            << "\", автор: " << books[i].author 
+            << ", год: " << books[i].year
+            << ", цена: " << books[i].price << std::endl;
+    }
+}
+void printExpensiveBook(Book* books, int size) {
+    int maxIndex = 0;
+
+    for (int i = 1; i < size; ++i) {
+        if (books[i].price > books[maxIndex].price) {
+            maxIndex = i;
+        }
+    }
+
+    std::cout << "\nСамая дорогая книга:" << books[maxIndex].title << std::endl;
+}
+void dynamicBookArray() {
+    int n = 0;
+    std::cout << "Введите количество книг в библиотеке: ";
+    std::cin >> n;
+
+    if (n <= 0) {
+        std::cout << "Некорректное количество книг." << std::endl;
+        return;
+    }
+
+    Book* books = new Book[n];
+
+    for (int i = 0; i < n; i++) {
+        std::cout << "Книга " << i + 1 << ":" << std::endl;
+        std::cout << "Название: ";
+        std::cin >> books[i].title;
+        std::cout << "Автор: ";
+        std::cin >> books[i].author;
+        std::cout << "Год издания: ";
+        std::cin >> books[i].year;
+        std::cout << "Цена: ";
+        std::cin >> books[i].price;
+    }
+
+    printBooks(books, n);
+    printExpensiveBook(books, n);
+
+    delete[] books;
 }
