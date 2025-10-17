@@ -17,15 +17,20 @@ Complex complexAdd(Complex a, Complex b);
 Complex complexSubstract(Complex from, Complex to);
 Complex complexMultiply(Complex a, Complex b);
 void complexPrint(Complex printed);
-
 void complexCalculate();
+
+void swapValuesForward(int a, int b);
+void swapValues(int& a, int& b);
+void swapValues(int* a, int* b);
+void swapIntegers();
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
     //temperatureExample();
     //manipulateString();
-    complexCalculate();
+    //complexCalculate();
+    swapIntegers();
 }
 
 void temperatureExample() {
@@ -151,4 +156,36 @@ void complexCalculate() {
     std::cout << "\nПроизведение: ";
     complexPrint(multiply);
     std::cout << std::endl;
+}
+
+void swapValuesForward(int a, int b) {
+    int buf = a;
+    a = b;
+    b = buf;
+}
+
+void swapValues(int& a, int& b) {
+    int buf = a;
+    a = b;
+    b = buf;
+}
+
+void swapValues(int* a, int* b) {
+    int buf = *a;
+    *a = *b;
+    *b = buf;
+}
+
+void swapIntegers() {
+    int a = 1;
+    int b = 2;
+
+    swapValuesForward(a, b);
+    std::cout << "После swapValues(a, b) (по значению): a = " << a << ", b = " << b << "\n";
+
+    swapValues(a, b);
+    std::cout << "После swapValues(a, b) (по ссылке): a = " << a << ", b = " << b << "\n";
+
+    swapValues(&a, &b);
+    std::cout << "После swapValues(a, b) (по указателю): a = " << a << ", b = " << b << "\n";
 }
