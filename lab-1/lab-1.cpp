@@ -5,15 +5,27 @@
 #include <locale>
 #include <windows.h>
 
+struct Complex {
+    double real;
+    double imag;
+};
+
 void temperatureExample();
 void manipulateString();
+
+Complex complexAdd(Complex a, Complex b);
+Complex complexSubstract(Complex from, Complex to);
+Complex complexMultiply(Complex a, Complex b);
+void complexPrint(Complex printed);
+
+void complexCalculate();
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
     //temperatureExample();
-    manipulateString();
-    
+    //manipulateString();
+    complexCalculate();
 }
 
 void temperatureExample() {
@@ -95,4 +107,52 @@ void manipulateString() {
     }
 
     std::cout << "Количество вхождений символа " << findedSymbol << " : " << findedSymbolCount << std::endl;
+}
+
+Complex complexAdd(Complex a, Complex b) {
+    Complex result;
+    result.real = a.real + b.real;
+    result.imag = a.imag + b.imag;
+    return result;
+}
+
+Complex complexSubstract(Complex from, Complex to) {
+    Complex result;
+    result.real = from.real - to.real;
+    result.imag = from.imag - to.imag;
+    return result;
+}
+
+Complex complexMultiply(Complex a, Complex b) {
+    Complex result;
+    result.real = a.real * b.real - a.imag * b.imag;
+    result.imag = a.real * b.imag + a.imag * b.real;
+    return result;
+}
+
+void complexPrint(Complex printed) {
+    std::cout << "(" << printed.real;
+    if (printed.imag >= 0) std::cout << " + " << printed.imag << "i)";
+    else std::cout << " - " << -printed.imag << "i)";
+}
+
+void complexCalculate() {
+    Complex c1, c2;
+    c1.real = 1.0;
+    c1.imag = 1.0;
+
+    c2.real = 5.0;
+    c2.imag = -10.0;
+
+    Complex sum = complexAdd(c1, c2);
+    Complex diff = complexSubstract(c1, c2);
+    Complex multiply = complexMultiply(c1, c2);
+
+    std::cout << "\nСумма: ";
+    complexPrint(sum);
+    std::cout << "\nРазность: ";
+    complexPrint(diff);
+    std::cout << "\nПроизведение: ";
+    complexPrint(multiply);
+    std::cout << std::endl;
 }
