@@ -115,27 +115,23 @@ Complex complexAdd(Complex a, Complex b) {
     result.imag = a.imag + b.imag;
     return result;
 }
-
 Complex complexSubstract(Complex from, Complex to) {
     Complex result;
     result.real = from.real - to.real;
     result.imag = from.imag - to.imag;
     return result;
 }
-
 Complex complexMultiply(Complex a, Complex b) {
     Complex result;
     result.real = a.real * b.real - a.imag * b.imag;
     result.imag = a.real * b.imag + a.imag * b.real;
     return result;
 }
-
 void complexPrint(Complex printed) {
     std::cout << "(" << printed.real;
     if (printed.imag >= 0) std::cout << " + " << printed.imag << "i)";
     else std::cout << " - " << -printed.imag << "i)";
 }
-
 void complexCalculate() {
     Complex c1, c2;
     c1.real = 1.0;
