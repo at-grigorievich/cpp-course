@@ -18,6 +18,18 @@ struct Book {
     double price;       
 };
 
+struct Date {
+    int day;
+    int month;
+    int year;
+};
+
+struct Student {
+    std::string fullname;
+    Date birthDate;
+    int grades[5];
+};
+
 void temperatureExample();
 void manipulateString();
 
@@ -38,6 +50,10 @@ void dynamicBookArray();
 
 void Fibonacci();
 
+void printStudent(const Student& student);
+double getAverageRating(const Student& student);
+void studentsRating();
+
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -46,7 +62,8 @@ int main()
     //complexCalculate();
     //swapIntegers();
     //dynamicBookArray();
-    Fibonacci();
+    //Fibonacci();
+    studentsRating();
 }
 
 void temperatureExample() {
@@ -302,4 +319,47 @@ void Fibonacci() {
     for (int* ptr = arr2; ptr < arr2 + 10; ++ptr)
         std::cout << *ptr << " ";
     std::cout << std::endl;
+}
+
+void printStudent(const Student& student) {
+    std::cout << "ФИО: " << student.fullname << std::endl;
+    std::cout << "Дата рождения: "
+        << student.birthDate.day << "."
+        << student.birthDate.month << "."
+        << student.birthDate.year << std::endl;
+
+    std::cout << "Оценки: ";
+    for (int i = 0; i < 5; i++) {
+        std::cout << student.grades[i] << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Средний балл: " << getAverageRating(student) << std::endl;
+    std::cout << "-*************************-" << std::endl;
+}
+double getAverageRating(const Student& student) {
+    int sum = 0;
+    for (int i = 0; i < 5; i++)
+        sum += student.grades[i];
+    return sum / 5.0;
+}
+void studentsRating() {
+    Student students[3] = {
+        {"Иванов Иван", {1, 1, 2025}, {5, 4, 5, 5, 4}},
+        {"Петров Петр", {30, 2, 1928}, {3, 4, 4, 3, 4}},
+        {"Герман Стерлингов", {9, 9, 1950}, {4, 4, 4, 4, 5}}
+    };
+
+    for (int i = 0; i < 3; i++) {
+        printStudent(students[i]);
+    }
+
+    std::cout << "[*************************]" << std::endl;
+
+    std::cout << "Студенты со средним баллом выше 4.0:" << std::endl;
+    for (int i = 0; i < 3; i++) {
+        if (getAverageRating(students[i]) > 4.0) {
+            printStudent(students[i]);
+        }
+    }
 }
