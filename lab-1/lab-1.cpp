@@ -66,6 +66,10 @@ void deposit(Account* account, double amount);
 void withdraw(Account& account, double amount);
 void accountModify();
 
+void sortBooksByYear(Book* books, int size);
+Book* findBookByAuthor(Book* books, int size, const std::string& author);
+void libraryMethods();
+
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -77,7 +81,8 @@ int main()
     //Fibonacci();
     //studentsRating();
     //utilityArray();
-    accountModify();
+    //accountModify();
+    libraryMethods();
 }
 
 void temperatureExample() {
@@ -435,4 +440,53 @@ void accountModify() {
 
     std::cout << std::endl << "Снятие средств:" << std::endl;
     withdraw(account, 160000.0);
+}
+
+void sortBooksByYear(Book* books, int size) {
+    for (int i = 0; i < size - 1; i++) {
+        for (int j = 0; j < size - i - 1; j++) {
+            if (books[j].year > books[j + 1].year) {
+                Book temp = books[j];
+                books[j] = books[j + 1];
+                books[j + 1] = temp;
+            }
+        }
+    }
+}
+Book* findBookByAuthor(Book* books, int size, const std::string& author) {
+    for (int i = 0; i < size; i++) {
+        if (books[i].author == author)
+            return &books[i];
+    }
+    return nullptr;
+}
+
+void libraryMethods() {
+    int size = 5;
+
+    std::string requiredAuthor = "С. Лемм";
+
+    Book* books = new Book[size]{
+        {"Мастер и Маргарита", "М. Булгаков", 1966, 500.0},
+        {"Преступление и наказание", "Ф. Достоевский", 1866, 450.0},
+        {"Война и мир", "Л. Толстой", 1869, 800.0},
+        {"Отцы и дети", "И. Тургенев", 1862, 400.0},
+        {"Евгений Онегин", "А. Пушкин", 1833, 350.0}
+    };
+
+    std::cout << "Список книг с сортировкой по году:" << std::endl;
+    sortBooksByYear(books, size);
+    printBooks(books, size);
+
+    std::cout << "Поиск книги по автору:" << std::endl;
+    Book* founded = findBookByAuthor(books, size, requiredAuthor);
+
+    if (founded == nullptr) {
+        std::cout << "Автор" << requiredAuthor << " не найден" << std::endl;
+    }
+    else
+    {
+        std::cout << "Книга автора " << requiredAuthor << " найдена:" << std::endl;
+        printBooks(founded, 1);
+    }
 }
