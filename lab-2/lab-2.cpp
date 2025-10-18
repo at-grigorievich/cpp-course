@@ -6,7 +6,7 @@ int main()
     setlocale(LC_ALL, "Russian");
 
     // Тестирование класса Student
-    student student("Иван Иванов", 20);
+    Student::student student("Иван Иванов", 20);
 
     // Установка оценок
     student.setGraduate(0, 5);
