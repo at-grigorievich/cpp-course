@@ -36,6 +36,8 @@ void printBooks(Book* books, int size);
 void printExpensiveBook(Book* books, int size);
 void dynamicBookArray();
 
+void Fibonacci();
+
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -43,7 +45,8 @@ int main()
     //manipulateString();
     //complexCalculate();
     //swapIntegers();
-    dynamicBookArray();
+    //dynamicBookArray();
+    Fibonacci();
 }
 
 void temperatureExample() {
@@ -248,4 +251,55 @@ void dynamicBookArray() {
     printExpensiveBook(books, n);
 
     delete[] books;
+}
+
+void Fibonacci() {
+    int arr1[10];
+    int arr2[10];
+    int sum = 0, min = 0, max = 0;
+
+    int* p = arr1;
+
+    *p = 0;
+    *(p + 1) = 1;
+
+    for (int i = 2; i < 10; i++) {
+        *(p + i) = *(p + i - 1) + *(p + i - 2);
+    }
+
+    std::cout << "Массив Фибоначчи: ";
+    for (int* ptr = p; ptr < p + 10; ptr++)
+        std::cout << *ptr << " ";
+    std::cout << std::endl;
+
+    min = *p;
+    max = *p;
+
+    for (int* ptr = p; ptr < p + 10; ptr++) {
+        sum += *ptr;
+
+        if (*ptr < min){
+            min = *ptr;
+        }
+        if(*ptr > max) {
+            max = *ptr;
+        }
+    }
+
+    std::cout << "Сумма элементов: " << sum << std::endl;
+    std::cout << "Минимальный элемент: " << min << std::endl;
+    std::cout << "Максимальный элемент: " << max << std::endl;
+
+    int* src = p + 9;
+    int* tgt = arr2;
+    while (src >= p) {
+        *tgt = *src;
+        tgt++;
+        src--;
+    }
+
+    std::cout << "Зеркальный массив : ";
+    for (int* ptr = arr2; ptr < arr2 + 10; ++ptr)
+        std::cout << *ptr << " ";
+    std::cout << std::endl;
 }
