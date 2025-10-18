@@ -30,6 +30,11 @@ struct Student {
     int grades[5];
 };
 
+struct Account {
+    int number;
+    double balance;
+};
+
 void temperatureExample();
 void manipulateString();
 
@@ -57,6 +62,10 @@ void studentsRating();
 void arrayInfo(int* arr, int size);
 void utilityArray();
 
+void deposit(Account* account, double amount);
+void withdraw(Account& account, double amount);
+void accountModify();
+
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -67,7 +76,8 @@ int main()
     //dynamicBookArray();
     //Fibonacci();
     //studentsRating();
-    utilityArray();
+    //utilityArray();
+    accountModify();
 }
 
 void temperatureExample() {
@@ -385,7 +395,6 @@ void arrayInfo(int* arr, int size) {
     std::cout << "Первый элемент: " << *arr << std::endl;
     std::cout << "Последний элемент: " << *(arr + size - 1) << std::endl;
 }
-
 void utilityArray() {
     int arr1[] = { 1, 2, 3, 4, 5 };
     int arr2[] = { 10, 20, 30, 40, 50, 60, 80, 100, 200, 400 };
@@ -396,4 +405,34 @@ void utilityArray() {
 
     std::cout << "второй массив:" << std::endl;
     arrayInfo(arr2, 10);
+}
+
+void deposit(Account* account, double amount) {
+    if (amount <= 0) {
+        std::cout << "Сумма пополнения должна быть положительной!" << std::endl;
+        return;
+    }
+
+    account->balance += amount;
+    std::cout << "Счёт " << account->number << " пополнен на " << amount << ". Новый баланс: " << account->balance << std::endl;
+}
+void withdraw(Account& account, double amount) {
+    if (account.balance < amount) {
+        std::cout << "Недостаточно средств на счёте " << account.number << "!" << std::endl;
+        return;
+    }
+
+    account.balance -= amount;
+
+    std::cout << "Со счёта " << account.number << " снято " << amount << ". Новый баланс: " << account.balance << std::endl;
+}
+void accountModify() {
+    Account account = { 1, 1000.0 };
+
+    std::cout << "Начальный баланс счёта " << account.number << ": " << account.balance << std::endl;
+    std::cout << std::endl << "Пополнение счёта:" << std::endl;
+    deposit(&account, 500.0);
+
+    std::cout << std::endl << "Снятие средств:" << std::endl;
+    withdraw(account, 160000.0);
 }
