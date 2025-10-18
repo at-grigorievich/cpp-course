@@ -54,6 +54,9 @@ void printStudent(const Student& student);
 double getAverageRating(const Student& student);
 void studentsRating();
 
+void arrayInfo(int* arr, int size);
+void utilityArray();
+
 int main()
 {
     setlocale(LC_ALL, "Russian");
@@ -63,7 +66,8 @@ int main()
     //swapIntegers();
     //dynamicBookArray();
     //Fibonacci();
-    studentsRating();
+    //studentsRating();
+    utilityArray();
 }
 
 void temperatureExample() {
@@ -362,4 +366,34 @@ void studentsRating() {
             printStudent(students[i]);
         }
     }
+}
+
+void arrayInfo(int* arr, int size) {
+    if (size <= 0) {
+        std::cout << "Массив пустой или имеет некорректный размер." << std::endl;
+        return;
+    }
+
+    int sum = 0;
+
+    for (int i = 0; i < size; i++) {
+        sum += *(arr + i);
+    }
+
+    std::cout << "Размер массива: " << size << std::endl;
+    std::cout << "Сумма элементов: " << sum << std::endl;
+    std::cout << "Первый элемент: " << *arr << std::endl;
+    std::cout << "Последний элемент: " << *(arr + size - 1) << std::endl;
+}
+
+void utilityArray() {
+    int arr1[] = { 1, 2, 3, 4, 5 };
+    int arr2[] = { 10, 20, 30, 40, 50, 60, 80, 100, 200, 400 };
+
+
+    std::cout << "первый массив:" << std::endl;
+    arrayInfo(arr1, 5);
+
+    std::cout << "второй массив:" << std::endl;
+    arrayInfo(arr2, 10);
 }
