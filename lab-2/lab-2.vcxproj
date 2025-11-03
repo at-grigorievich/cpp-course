@@ -123,11 +123,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="academic.cpp" />
+    <ClCompile Include="bankaccount.cpp" />
     <ClCompile Include="lab-2.cpp" />
+    <ClCompile Include="library.cpp" />
+    <ClCompile Include="shape.cpp" />
     <ClCompile Include="student.cpp" />
+    <ClCompile Include="vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="academic.h" />
+    <ClInclude Include="bankaccount.h" />
+    <ClInclude Include="library.h" />
+    <ClInclude Include="shape.h" />
     <ClInclude Include="student.h" />
+    <ClInclude Include="vehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

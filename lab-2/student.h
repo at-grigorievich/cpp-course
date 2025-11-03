@@ -3,7 +3,7 @@
 #include <string>
 #include <vector>
 
-namespace Student {
+namespace students {
 	class student {
 		private:
 			std::string fullname;

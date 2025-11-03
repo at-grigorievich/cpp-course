@@ -27,9 +27,39 @@
     <ClCompile Include="student.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="academic.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="shape.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="vehicle.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="library.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="bankaccount.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="student.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="academic.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="shape.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="vehicle.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="library.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="bankaccount.h">
       <Filter>includes</Filter>
     </ClInclude>
   </ItemGroup>
