@@ -5,6 +5,9 @@
 #include "vehicle.h"
 #include "library.h"
 #include "bankaccount.h"
+#include "complex.h"
+#include "persons.h"
+#include "data_structures.h"
 
 void showFirstTask();
 void showSecondTask();
@@ -12,6 +15,9 @@ void showThirdTask();
 void showFourthTask();
 void showFifthTask();
 void showSixthTask();
+void showSeventhTask();
+void showEigthTask();
+void showNinthTask();
 
 int main()
 {
@@ -22,7 +28,10 @@ int main()
     //showThirdTask();
     //showFourthTask();
     //showFifthTask();
-    showSixthTask();
+    //showSixthTask();
+    //showSeventhTask();
+    //showEigthTask();
+    showNinthTask();
 
     return 0;
 }
@@ -145,4 +154,87 @@ void showSixthTask() {
 
     std::cout << "Общий баланс банка после операций: " << staticbank::bankaccount::getTotalBankBalance() << std::endl;
     std::cout << "Средний баланс после операций: " << staticbank::bankaccount::getAverageBalance() << std::endl;
+}
+
+void showSeventhTask() {
+    friendly_complex::complex a(3, 4);
+    friendly_complex::complex b(1, 2);
+
+    friendly_complex::complex sum = a + b;
+    friendly_complex::complex diff = a - b;
+    friendly_complex::complex prod = a * b;
+
+    std::cout << "a = " << a << std::endl;
+    std::cout << "b = " << b << std::endl;
+    std::cout << "a + b = " << sum << std::endl;
+    std::cout << "a - b = " << diff << std::endl;
+    std::cout << "a * b = " << prod << std::endl;
+
+    if (a == b)
+        std::cout << "a и b равны" << std::endl;
+    else
+        std::cout << "a и b не равны" << std::endl;
+
+    friendly_complex::complex c;
+    std::cin >> c;
+    std::cout << "Вы ввели: " << c << std::endl;
+}
+
+void showEigthTask() {
+    multiple_persons::teacher t("Иванов", 35, "Учитель", 60000, "Математика", 10);
+    multiple_persons::professor p("Петров", 50, "Профессор", 120000, "Физика", 25, "Квантовая механика", 40);
+
+    std::cout << "--- Учитель ---" << std::endl;
+    t.display();
+    t.work();
+    t.holdLesson();
+
+    std::cout << "\n--- Professor ---" << std::endl;
+    p.display();
+    p.work();
+    p.conductResearch();
+    p.guideStudents();
+}
+
+void showNinthTask() {
+    try {
+        std::cout << "--- Stack<int> ---" << std::endl;
+        generic_structures::stack<int> intStack(5);
+        intStack.push(10);
+        intStack.push(20);
+        intStack.push(30);
+        intStack.display();
+        std::cout << "Верхний элемент: " << intStack.top() << std::endl;
+        intStack.pop();
+        intStack.display();
+
+        std::cout << "\n--- Stack<string> ---" << std::endl;
+        generic_structures::stack<std::string> strStack(3);
+        strStack.push("Hello");
+        strStack.push("World");
+        strStack.display();
+        std::cout << "Верхний элемент: " << strStack.top() << std::endl;
+
+        std::cout << "\n--- Queue<double> ---" << std::endl;
+        generic_structures::queue<double> dblQueue(4);
+        dblQueue.enqueue(1.1);
+        dblQueue.enqueue(2.2);
+        dblQueue.enqueue(3.3);
+        dblQueue.display();
+        std::cout << "Первый элемент: " << dblQueue.front() << std::endl;
+        dblQueue.dequeue();
+        dblQueue.display();
+
+        std::cout << "\n--- Queue<int> ---" << std::endl;
+        generic_structures::queue<int> intQueue(3);
+        intQueue.enqueue(100);
+        intQueue.enqueue(200);
+        intQueue.enqueue(300);
+        intQueue.display();
+        intQueue.dequeue();
+        intQueue.display();
+    }
+    catch (const std::exception& ex) {
+        std::cerr << "Ошибка: " << ex.what() << std::endl;
+    }
 }

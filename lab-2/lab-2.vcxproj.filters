@@ -42,6 +42,12 @@
     <ClCompile Include="bankaccount.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="complex.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="persons.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="student.h">
@@ -60,6 +66,15 @@
       <Filter>includes</Filter>
     </ClInclude>
     <ClInclude Include="bankaccount.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="complex.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="persons.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="data_structures.h">
       <Filter>includes</Filter>
     </ClInclude>
   </ItemGroup>
