@@ -8,6 +8,7 @@
 #include "complex.h"
 #include "persons.h"
 #include "data_structures.h"
+#include "university_members.h"
 
 void showFirstTask();
 void showSecondTask();
@@ -18,6 +19,7 @@ void showSixthTask();
 void showSeventhTask();
 void showEigthTask();
 void showNinthTask();
+void showTenTask();
 
 int main()
 {
@@ -31,7 +33,8 @@ int main()
     //showSixthTask();
     //showSeventhTask();
     //showEigthTask();
-    showNinthTask();
+    //showNinthTask();
+    showTenTask();
 
     return 0;
 }
@@ -237,4 +240,51 @@ void showNinthTask() {
     catch (const std::exception& ex) {
         std::cerr << "Ошибка: " << ex.what() << std::endl;
     }
+}
+
+void showTenTask() {
+    using namespace university_members_space;
+
+    university uni("Tech University");
+
+    std::unique_ptr<professor> prof1 = std::make_unique<professor>(
+        "Иванов", "P001", "ivanov@uni.edu", "Физика", "B12", 4000
+    );
+    std::unique_ptr<professor> prof2 = std::make_unique<professor>(
+        "Петрова", "P002", "petrova@uni.edu", "Информатика", "C21", 4200
+    );
+
+    std::unique_ptr<student> stud1 = std::make_unique<student>(
+        "Алексей", "S001", "alex@uni.edu", "Информатика", 2, 3.8
+    );
+    std::unique_ptr<student> stud2 = std::make_unique<student>(
+        "Мария", "S002", "maria@uni.edu", "Физика", 1, 3.9
+    );
+
+    std::unique_ptr<course> course1 = std::make_unique<course>(
+        "CS101", "Программирование", 5
+    );
+    std::unique_ptr<course> course2 = std::make_unique<course>(
+        "PH201", "Механика", 4
+    );
+
+    course1->setInstructor(prof2.get());
+    course2->setInstructor(prof1.get());
+
+    course1->addStudent(stud1.get());
+    course2->addStudent(stud1.get());
+    course2->addStudent(stud2.get());
+
+    uni.addMember(std::move(prof1));
+    uni.addMember(std::move(prof2));
+    uni.addMember(std::move(stud1));
+    uni.addMember(std::move(stud2));
+
+    uni.addCourse(std::move(course1));
+    uni.addCourse(std::move(course2));
+
+    uni.displayAllMembers();
+    uni.displayAllCourses();
+
+    std::cout << "Всего университетов: " << university::getTotalUniversities() << "\n";
 }
