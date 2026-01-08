@@ -1,0 +1,10 @@
+^D:\DEV\CPP-COURSE\BANKING-SYSTEM\BUILD\CMAKEFILES\97C2D3DC0E469D7473A0D8964B80D31A\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SD:/Dev/cpp-course/banking-system -BD:/Dev/cpp-course/banking-system/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file D:/Dev/cpp-course/banking-system/build/BankSystem.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

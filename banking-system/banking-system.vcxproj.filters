@@ -14,7 +14,7 @@
     <Filter Include="docs">
       <UniqueIdentifier>{26086d68-5167-4ee2-8150-8b42d03cc670}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\build">
+    <Filter Include="build">
       <UniqueIdentifier>{444aea1b-013d-4681-b584-cd9408d43d1e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -60,5 +60,8 @@
     <ClInclude Include="Bank.h">
       <Filter>includes</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="CMakeLists.txt" />
   </ItemGroup>
 </Project>

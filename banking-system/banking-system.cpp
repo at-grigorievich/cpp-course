@@ -2,12 +2,13 @@
 #include <limits>
 #include "Bank.h"
 #include "PremiumClient.h"
+#include <windows.h>
 
 using namespace Banking;
 
 void clearInput() {
     std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
 }
 
 Address inputAddress() {
@@ -46,6 +47,7 @@ void clientMenu(Bank& bank) {
 
         if (choice == 1 || choice == 2) {
             std::string fn, ln;
+
             std::cout << "Имя: ";
             std::getline(std::cin, fn);
             std::cout << "Фамилия: ";
@@ -195,6 +197,8 @@ void operationMenu(Bank& bank) {
 
 int main() {
     setlocale(LC_ALL, "");
+    SetConsoleCP(1251);      
+    SetConsoleOutputCP(1251);
 
     Bank bank;
     int choice;
