@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="includes">
+      <UniqueIdentifier>{d209e9e1-663d-4593-a408-8f6098de63c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{11a033c3-e9cf-45ca-b0f2-b73d7e2f8550}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="docs">
+      <UniqueIdentifier>{26086d68-5167-4ee2-8150-8b42d03cc670}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\build">
+      <UniqueIdentifier>{444aea1b-013d-4681-b584-cd9408d43d1e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="banking-system.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Client.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="PremiumClient.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Account.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Transaction.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Bank.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Address.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Date.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="PremiumClient.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Account.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Transaction.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Bank.h">
+      <Filter>includes</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
