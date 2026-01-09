@@ -5,15 +5,18 @@
 
 #include "VectorSumCalculator.h"
 #include "ThreadSafeQueue.h"
+#include "ImageProcessor.h"
 
 void FirstTaskExecutor();
 void SecondTaskExecutor();
+void ThirdTaskExecutor();
 
 int main() {
 	setlocale(LC_ALL, "Russian");
 
 	//FirstTaskExecutor();
-	SecondTaskExecutor();
+	//SecondTaskExecutor();
+    ThirdTaskExecutor();
 
     return 0;
 }
@@ -70,4 +73,17 @@ void SecondTaskExecutor() {
     for (auto& t : consumers) {
         t.join();
     }
+}
+void ThirdTaskExecutor() {
+	using namespace ThirdTask;
+
+    ImageProcessor processor(200, 200);
+
+    std::cout << "Single thread processing...\n";
+    processor.applyFilterSingleThread();
+    processor.printAverageBrightness();
+
+    std::cout << "Multi thread processing...\n";
+    processor.applyFilterMultiThread(4);
+    processor.printAverageBrightness();
 }
