@@ -6,17 +6,20 @@
 #include "VectorSumCalculator.h"
 #include "ThreadSafeQueue.h"
 #include "ImageProcessor.h"
+#include "PiCalculator.h"
 
 void FirstTaskExecutor();
 void SecondTaskExecutor();
 void ThirdTaskExecutor();
+void FourthTaskExecutor();
 
 int main() {
 	setlocale(LC_ALL, "Russian");
 
 	//FirstTaskExecutor();
 	//SecondTaskExecutor();
-    ThirdTaskExecutor();
+    //ThirdTaskExecutor();
+	FourthTaskExecutor();
 
     return 0;
 }
@@ -86,4 +89,16 @@ void ThirdTaskExecutor() {
     std::cout << "Multi thread processing...\n";
     processor.applyFilterMultiThread(4);
     processor.printAverageBrightness();
+}
+void FourthTaskExecutor() {
+	using namespace FourthTask;
+
+    PiCalculator calculator;
+
+    int totalPoints = 1'000'000;
+    int tasks = 4;
+
+    double pi = calculator.calculatePiParallel(totalPoints, tasks);
+
+    std::cout << "Calculated PI: " << pi << std::endl;
 }

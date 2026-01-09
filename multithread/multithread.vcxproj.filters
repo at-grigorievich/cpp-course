@@ -25,6 +25,9 @@
     <ClCompile Include="ImageProcessor.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="PiCalculator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VectorSumCalculator.h">
@@ -34,6 +37,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="ImageProcessor.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="PiCalculator.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
