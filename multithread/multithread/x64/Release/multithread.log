@@ -1,7 +1,7 @@
 ﻿  multithread.cpp
   Создание кода
-  195 of 228 functions (85.5%) were compiled, the rest were copied from previous compilation.
-    36 functions were new in current compilation
-    6 functions had inline decision re-evaluated but remain unchanged
+  0 of 290 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   multithread.vcxproj -> D:\Dev\cpp-course\multithread\x64\Release\multithread.exe

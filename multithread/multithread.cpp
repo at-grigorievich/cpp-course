@@ -1,13 +1,19 @@
 ﻿#include <iostream>
 #include <chrono>
+#include <vector>
+#include <thread>
+
 #include "VectorSumCalculator.h"
+#include "ThreadSafeQueue.h"
 
 void FirstTaskExecutor();
+void SecondTaskExecutor();
 
 int main() {
 	setlocale(LC_ALL, "Russian");
 
-	FirstTaskExecutor();
+	//FirstTaskExecutor();
+	SecondTaskExecutor();
 
     return 0;
 }
@@ -46,5 +52,22 @@ void FirstTaskExecutor() {
     if (duration_multi.count() > 0) {
         double speedup = static_cast<double>(duration_single.count()) / duration_multi.count();
         std::cout << "Ускорение: " << speedup << "x\n";
+    }
+}
+void SecondTaskExecutor() {
+	using namespace SecondTask;
+    ThreadSafeQueue<int> queue;
+
+    std::thread prod(producer, std::ref(queue), 10);
+
+    std::vector<std::thread> consumers;
+    for (int i = 1; i <= 3; i++) {
+        consumers.push_back(std::thread(consumer, std::ref(queue), i));
+    }
+
+    prod.join();
+
+    for (auto& t : consumers) {
+        t.join();
     }
 }

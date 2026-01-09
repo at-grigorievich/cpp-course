@@ -128,9 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="multithread.cpp" />
+    <ClCompile Include="ThreadSafeQueue.cpp" />
     <ClCompile Include="VectorSumCalculator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ThreadSafeQueue.h" />
     <ClInclude Include="VectorSumCalculator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

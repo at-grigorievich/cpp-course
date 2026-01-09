@@ -19,9 +19,15 @@
     <ClCompile Include="VectorSumCalculator.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="ThreadSafeQueue.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VectorSumCalculator.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadSafeQueue.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
