@@ -1,0 +1,6 @@
+﻿  multithread.cpp
+  VectorSumCalculator.cpp
+D:\Dev\cpp-course\multithread\VectorSumCalculator.cpp(33,22): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Dev\cpp-course\multithread\VectorSumCalculator.cpp(38,25): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
+  multithread.vcxproj -> D:\Dev\cpp-course\multithread\x64\Debug\multithread.exe
