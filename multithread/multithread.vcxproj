@@ -130,12 +130,14 @@
     <ClCompile Include="ImageProcessor.cpp" />
     <ClCompile Include="multithread.cpp" />
     <ClCompile Include="PiCalculator.cpp" />
+    <ClCompile Include="ThreadPool.cpp" />
     <ClCompile Include="ThreadSafeQueue.cpp" />
     <ClCompile Include="VectorSumCalculator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ImageProcessor.h" />
     <ClInclude Include="PiCalculator.h" />
+    <ClInclude Include="ThreadPool.h" />
     <ClInclude Include="ThreadSafeQueue.h" />
     <ClInclude Include="VectorSumCalculator.h" />
   </ItemGroup>

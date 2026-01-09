@@ -7,11 +7,13 @@
 #include "ThreadSafeQueue.h"
 #include "ImageProcessor.h"
 #include "PiCalculator.h"
+#include "ThreadPool.h"
 
 void FirstTaskExecutor();
 void SecondTaskExecutor();
 void ThirdTaskExecutor();
 void FourthTaskExecutor();
+void FifthTaskExecutor();
 
 int main() {
 	setlocale(LC_ALL, "Russian");
@@ -19,7 +21,8 @@ int main() {
 	//FirstTaskExecutor();
 	//SecondTaskExecutor();
     //ThirdTaskExecutor();
-	FourthTaskExecutor();
+	//FourthTaskExecutor();
+	FifthTaskExecutor();
 
     return 0;
 }
@@ -101,4 +104,19 @@ void FourthTaskExecutor() {
     double pi = calculator.calculatePiParallel(totalPoints, tasks);
 
     std::cout << "Calculated PI: " << pi << std::endl;
+}
+void FifthTaskExecutor() {
+	using namespace FifthTask;
+
+    ThreadPool pool(3);
+
+    std::vector<std::future<unsigned long long>> results;
+
+    for (int i = 5; i <= 10; i++) {
+        results.push_back(pool.submit(factorial, i));
+    }
+
+    for (auto& r : results) {
+        std::cout << r.get() << std::endl;
+    }
 }

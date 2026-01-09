@@ -28,6 +28,9 @@
     <ClCompile Include="PiCalculator.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="ThreadPool.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VectorSumCalculator.h">
@@ -40,6 +43,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="PiCalculator.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadPool.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
