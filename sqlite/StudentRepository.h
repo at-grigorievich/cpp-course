@@ -5,6 +5,7 @@
 #include "Student.h"
 #include "Grade.h"
 #include "StudentStats.h"
+#include "InputValidator.h"
 
 namespace SecondTask {
     class StudentRepository
@@ -30,5 +31,9 @@ namespace SecondTask {
 
     private:
         sqlite3* _db;
+        FourthTask::InputValidator _validator;
+
+        void validateStudentData(const std::string& name, const std::string& email, const std::string& group,
+            const std::vector<ThirdTask::Grade>& grades = {});
     };
 }

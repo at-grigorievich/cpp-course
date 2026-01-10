@@ -7,10 +7,10 @@ namespace SecondTask{
 		_db = dbManager.GetConnection();
 	}
 
-    bool StudentRepository::addStudent(const std::string& name,
-        const std::string& email,
-        const std::string& group)
+    bool StudentRepository::addStudent(const std::string& name, const std::string& email, const std::string& group)
     {
+        validateStudentData(name, email, group);
+
         const char* sql =
             "INSERT INTO students (name, email, group_name) VALUES (?, ?, ?);";
 
@@ -96,11 +96,10 @@ namespace SecondTask{
         return students;
     }
 
-    bool StudentRepository::updateStudent(int id,
-        const std::string& name,
-        const std::string& email,
-        const std::string& group)
+    bool StudentRepository::updateStudent(int id,const std::string& name, const std::string& email, const std::string& group)
     {
+        validateStudentData(name, email, group);
+
         const char* sql =
             "UPDATE students SET name = ?, email = ?, group_name = ? WHERE id = ?;";
 
@@ -146,6 +145,8 @@ namespace SecondTask{
     bool StudentRepository::addStudentWithGrades(const std::string& name, const std::string& email, const std::string& group,
         const std::vector<ThirdTask::Grade>& grades)
     {
+        validateStudentData(name, email, group, grades);
+
         if (sqlite3_exec(_db, "BEGIN TRANSACTION;", nullptr, nullptr, nullptr) != SQLITE_OK)
             return false;
 
@@ -211,6 +212,7 @@ namespace SecondTask{
 
         return true;
     }
+
     std::vector<Student> StudentRepository::getStudentsByGroup(const std::string& group)
     {
         const char* sql =
@@ -238,6 +240,7 @@ namespace SecondTask{
         sqlite3_finalize(stmt);
         return result;
     }
+
     double StudentRepository::getAverageGradeBySubject(const std::string& subject)
     {
         const char* sql =
@@ -259,6 +262,7 @@ namespace SecondTask{
         sqlite3_finalize(stmt);
         return avg;
     }
+
     std::vector<ThirdTask::StudentStats> StudentRepository::getTopStudents(int limit)
     {
         const char* sql =
@@ -288,5 +292,48 @@ namespace SecondTask{
 
         sqlite3_finalize(stmt);
         return result;
+    }
+
+
+    void StudentRepository::validateStudentData(const std::string& name, const std::string& email, const std::string& group,
+        const std::vector<ThirdTask::Grade>& grades)
+    {
+        if (!_validator.isValidLength(name, 50))
+            throw std::invalid_argument("Имя слишком длинное (макс. 50 символов)");
+
+        if (!_validator.isValidLength(email, 50))
+            throw std::invalid_argument("Email слишком длинный (макс. 50 символов)");
+
+        if (!_validator.isValidLength(group, 20))
+            throw std::invalid_argument("Название группы слишком длинное (макс. 20 символов)");
+
+        if (!_validator.isValidEmail(email))
+            throw std::invalid_argument("Некорректный формат email");
+
+        if (!_validator.isSafeInput(name)) {
+            throw std::invalid_argument("Обнаружена потенциальная SQL-инъекция в имени");
+        }
+
+        if (!_validator.isSafeInput(email)) {
+            throw std::invalid_argument("Обнаружена потенциальная SQL-инъекция в Email");
+        }
+
+        if (!_validator.isSafeInput(group)) {
+            throw std::invalid_argument("Обнаружена потенциальная SQL-инъекция в названии группы");
+        }
+
+        for (const ThirdTask::Grade g : grades)
+        {
+            if (!_validator.isValidLength(g.subject, 30))
+                throw std::invalid_argument("Название предмета слишком длинное (макс. 30 символов)");
+
+            if (!_validator.isValidGrade(g.grade))
+                throw std::invalid_argument("Оценка должна быть в диапазоне 0–100");
+
+            if (!_validator.isSafeInput(g.subject))
+                throw std::invalid_argument("Обнаружена потенциальная SQL-инъекция в названии предмета");
+        }
+
+		std::cout << "Валидация данных студента пройдена успешно\n";
     }
 }

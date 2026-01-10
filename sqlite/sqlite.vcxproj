@@ -131,12 +131,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DatabaseManager.cpp" />
+    <ClCompile Include="InputValidator.cpp" />
     <ClCompile Include="sqlite.cpp" />
     <ClCompile Include="StudentRepository.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DatabaseManager.h" />
     <ClInclude Include="Grade.h" />
+    <ClInclude Include="InputValidator.h" />
     <ClInclude Include="SQLite\sqlite3.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="StudentRepository.h" />

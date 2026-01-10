@@ -30,6 +30,9 @@
     <ClCompile Include="StudentRepository.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="InputValidator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SQLite\sqlite3.h">
@@ -48,6 +51,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="StudentStats.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="InputValidator.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
