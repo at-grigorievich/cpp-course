@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="sqlite.vcxproj" />
+  <Project Path="sqlite.vcxproj" Id="255011f8-f432-498c-be9f-f10f1bdb3417" />
 </Solution>

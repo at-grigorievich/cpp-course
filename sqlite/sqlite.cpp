@@ -1,15 +1,31 @@
 ﻿#include <iostream>
-#include <sqlite3.h>
+#include "DatabaseManager.h"
+
+void FirstTaskExecute();
 
 int main()
 {
-	setlocale(LC_ALL, "ru");
+	setlocale(LC_ALL, "Russian");
+	FirstTaskExecute();
+}
 
-	sqlite3* db;
-	sqlite3_open(":memory:", &db);
+void FirstTaskExecute()
+{
+    using namespace SQLite;
 
-	std::cout << "Database opened successfully." << std::endl;
+    DatabaseManager db("students.db");
 
-	sqlite3_close(db);
+    if (!db.Open())
+    {
+        std::cout << "Не удалось подключиться к базе данных\n";
+        return;
+    }
 
+    if (!db.InitializeTables())
+    {
+        std::cout << "Ошибка при создании таблиц\n";
+		return;
+    }
+
+    std::cout << "База данных успешно инициализирована\n";
 }
