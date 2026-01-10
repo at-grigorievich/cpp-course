@@ -1,2 +1,6 @@
-﻿  sqlite.cpp
+﻿  DatabaseManager.cpp
+  sqlite.cpp
+  StudentRepository.cpp
+  Создание кода...
+LINK : warning LNK4098: библиотека по умолчанию "LIBCMT" конфликтует с использованием других библиотек; используйте /NODEFAULTLIB:library
   sqlite.vcxproj -> D:\Dev\cpp-course\sqlite\x64\Debug\sqlite.exe

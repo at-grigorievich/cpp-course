@@ -77,4 +77,9 @@ namespace SQLite {
 
         return Execute(studentsTable) && Execute(gradesTable);
     }
+
+    sqlite3* DatabaseManager::GetConnection() const
+    {
+        return _db;
+    }
 }

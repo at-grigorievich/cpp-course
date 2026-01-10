@@ -1,12 +1,15 @@
 ﻿#include <iostream>
 #include "DatabaseManager.h"
+#include "StudentRepository.h"
 
 void FirstTaskExecute();
+void SecondTaskExecute();
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	FirstTaskExecute();
+	//FirstTaskExecute();
+	SecondTaskExecute();
 }
 
 void FirstTaskExecute()
@@ -28,4 +31,23 @@ void FirstTaskExecute()
     }
 
     std::cout << "База данных успешно инициализирована\n";
+}
+
+void SecondTaskExecute() {
+	using namespace SQLite;
+    using namespace SecondTask;
+
+    DatabaseManager db("students.db");
+    db.Open();
+    db.InitializeTables();
+
+    StudentRepository repo(db);
+
+    repo.addStudent("Иван Иванов", "ivan@pfur.ru", "CS-101");
+
+    auto student = repo.getStudent(1);
+    if (student)
+    {
+        std::cout << student->name << std::endl;
+    }
 }

@@ -27,12 +27,21 @@
     <ClCompile Include="DatabaseManager.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="StudentRepository.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SQLite\sqlite3.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="DatabaseManager.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Student.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="StudentRepository.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

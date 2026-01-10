@@ -13,6 +13,7 @@ namespace SQLite {
         void Close();
 
         bool InitializeTables();
+        sqlite3* GetConnection() const;
 
     private:
         bool Execute(const std::string& sql);
