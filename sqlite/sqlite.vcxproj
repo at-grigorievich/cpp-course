@@ -136,9 +136,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DatabaseManager.h" />
+    <ClInclude Include="Grade.h" />
     <ClInclude Include="SQLite\sqlite3.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="StudentRepository.h" />
+    <ClInclude Include="StudentStats.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

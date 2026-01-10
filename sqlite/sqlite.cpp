@@ -4,12 +4,14 @@
 
 void FirstTaskExecute();
 void SecondTaskExecute();
+void ThirdTaskExecute();
 
 int main()
 {
 	setlocale(LC_ALL, "Russian");
 	//FirstTaskExecute();
-	SecondTaskExecute();
+	//SecondTaskExecute();
+	ThirdTaskExecute();
 }
 
 void FirstTaskExecute()
@@ -32,7 +34,6 @@ void FirstTaskExecute()
 
     std::cout << "База данных успешно инициализирована\n";
 }
-
 void SecondTaskExecute() {
 	using namespace SQLite;
     using namespace SecondTask;
@@ -49,5 +50,49 @@ void SecondTaskExecute() {
     if (student)
     {
         std::cout << student->name << std::endl;
+    }
+}
+void ThirdTaskExecute() {
+    using namespace SQLite;
+    using namespace SecondTask;
+	using namespace ThirdTask;
+
+    DatabaseManager db("students.db");
+    db.Open();
+    db.InitializeTables();
+
+    StudentRepository repo(db);
+
+    std::vector<Grade> grades = {
+        {"Математика", 85},
+        {"Физика", 90}
+    };
+
+    bool success = repo.addStudentWithGrades(
+        "Артем Петров",
+        "passf@university.ru",
+        "CS-101",
+        grades
+    );
+
+    if (success)
+    {
+        std::cout << "Студент и оценки успешно добавлены (транзакция)\n";
+    }
+    else
+    {
+        std::cout << "Ошибка при добавлении студента и оценок\n";
+        return;
+    }
+
+    auto topStudents = repo.getTopStudents(5);
+
+    std::cout << "Топ студентов:\n";
+    for (const auto& s : topStudents)
+    {
+        std::cout << "ID: " << s.id
+            << ", Имя: " << s.name
+            << ", Средний балл: " << s.averageGrade
+            << std::endl;
     }
 }

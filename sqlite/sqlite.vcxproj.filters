@@ -44,5 +44,11 @@
     <ClInclude Include="StudentRepository.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="Grade.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="StudentStats.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
