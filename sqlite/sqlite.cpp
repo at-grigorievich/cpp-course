@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <gtest/gtest.h>
 #include "DatabaseManager.h"
 #include "StudentRepository.h"
 
@@ -6,14 +7,16 @@ void FirstTaskExecute();
 void SecondTaskExecute();
 void ThirdTaskExecute();
 void FourthTaskExecute();
+int FifthTaskExecute(int argc, char** argv);
 
-int main()
+int main(int argc, char** argv)
 {
 	setlocale(LC_ALL, "Russian");
 	//FirstTaskExecute();
 	//SecondTaskExecute();
 	//ThirdTaskExecute();
-	FourthTaskExecute();
+	//FourthTaskExecute();
+	return FifthTaskExecute(argc, argv);
 }
 
 void FirstTaskExecute()
@@ -151,4 +154,8 @@ void FourthTaskExecute() {
     {
         std::cout << "Ошибка валидации: " << ex.what() << std::endl;
     }
+}
+int FifthTaskExecute(int argc, char** argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

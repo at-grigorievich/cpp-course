@@ -130,10 +130,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Загрузки\catch_amalgamated.cpp" />
     <ClCompile Include="DatabaseManager.cpp" />
     <ClCompile Include="InputValidator.cpp" />
     <ClCompile Include="sqlite.cpp" />
     <ClCompile Include="StudentRepository.cpp" />
+    <ClCompile Include="StudentRepositoryTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DatabaseManager.h" />
@@ -145,6 +147,5 @@
     <ClInclude Include="StudentStats.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <ImportGroup Label="ExtensionTargets">
-  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets" />
 </Project>

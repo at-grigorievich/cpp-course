@@ -1,2 +1,4 @@
-﻿  sqlite.cpp
+﻿  StudentRepositoryTest.cpp
   sqlite.vcxproj -> D:\Dev\cpp-course\sqlite\x64\Debug\sqlite.exe
+  "pwsh.exe" не является внутренней или внешней
+  командой, исполняемой программой или пакетным файлом.

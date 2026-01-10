@@ -75,7 +75,19 @@ namespace SQLite {
         );
     )";
 
-        return Execute(studentsTable) && Execute(gradesTable);
+		bool studentsCreated = Execute(studentsTable);
+		bool gradesCreated = Execute(gradesTable);
+
+        if (studentsCreated && gradesCreated) {
+            sqlite3_exec(_db, "CREATE UNIQUE INDEX IF NOT EXISTS idx_students_email ON students(email);", nullptr, nullptr, nullptr);
+            sqlite3_exec(_db, "CREATE INDEX IF NOT EXISTS idx_students_group ON students(group_name);", nullptr, nullptr, nullptr);
+            sqlite3_exec(_db, "CREATE INDEX IF NOT EXISTS idx_grades_subject ON grades(subject);", nullptr, nullptr, nullptr);
+            std::cout << "Таблицы успешно созданы или уже существуют." << std::endl;
+
+			return true;
+        }
+
+        return false;
     }
 
     sqlite3* DatabaseManager::GetConnection() const

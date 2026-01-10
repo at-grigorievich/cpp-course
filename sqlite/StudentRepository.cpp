@@ -294,6 +294,74 @@ namespace SecondTask{
         return result;
     }
 
+    bool StudentRepository::batchInsertStudents(const std::vector<StudentWithGrades>& students)
+    {
+        if (sqlite3_exec(_db, "BEGIN TRANSACTION;", nullptr, nullptr, nullptr) != SQLITE_OK)
+            return false;
+
+        const char* studentSql = "INSERT INTO students (name, email, group_name) VALUES (?, ?, ?);";
+        const char* gradeSql = "INSERT INTO grades (student_id, subject, grade) VALUES (?, ?, ?);";
+
+        sqlite3_stmt* studentStmt = nullptr;
+        sqlite3_stmt* gradeStmt = nullptr;
+
+        if (sqlite3_prepare_v2(_db, studentSql, -1, &studentStmt, nullptr) != SQLITE_OK ||
+            sqlite3_prepare_v2(_db, gradeSql, -1, &gradeStmt, nullptr) != SQLITE_OK)
+        {
+            sqlite3_exec(_db, "ROLLBACK;", nullptr, nullptr, nullptr);
+            return false;
+        }
+
+        try
+        {
+            for (const StudentWithGrades s : students)
+            {
+                validateStudentData(s.name, s.email, s.group, s.grades);
+
+                sqlite3_bind_text(studentStmt, 1, s.name.c_str(), -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(studentStmt, 2, s.email.c_str(), -1, SQLITE_TRANSIENT);
+                sqlite3_bind_text(studentStmt, 3, s.group.c_str(), -1, SQLITE_TRANSIENT);
+
+                if (sqlite3_step(studentStmt) != SQLITE_DONE)
+                    throw std::runtime_error("Ошибка при вставке студента");
+
+                int studentId = static_cast<int>(sqlite3_last_insert_rowid(_db));
+                sqlite3_reset(studentStmt);
+                sqlite3_clear_bindings(studentStmt);
+
+                for (const auto& g : s.grades)
+                {
+                    sqlite3_bind_int(gradeStmt, 1, studentId);
+                    sqlite3_bind_text(gradeStmt, 2, g.subject.c_str(), -1, SQLITE_TRANSIENT);
+                    sqlite3_bind_int(gradeStmt, 3, g.grade);
+
+                    if (sqlite3_step(gradeStmt) != SQLITE_DONE)
+                        throw std::runtime_error("Ошибка при вставке оценки");
+
+                    sqlite3_reset(gradeStmt);
+                    sqlite3_clear_bindings(gradeStmt);
+                }
+            }
+
+            sqlite3_finalize(studentStmt);
+            sqlite3_finalize(gradeStmt);
+
+            if (sqlite3_exec(_db, "COMMIT;", nullptr, nullptr, nullptr) != SQLITE_OK)
+            {
+                sqlite3_exec(_db, "ROLLBACK;", nullptr, nullptr, nullptr);
+                return false;
+            }
+
+            return true;
+        }
+        catch (...)
+        {
+            sqlite3_finalize(studentStmt);
+            sqlite3_finalize(gradeStmt);
+            sqlite3_exec(_db, "ROLLBACK;", nullptr, nullptr, nullptr);
+            return false;
+        }
+    }
 
     void StudentRepository::validateStudentData(const std::string& name, const std::string& email, const std::string& group,
         const std::vector<ThirdTask::Grade>& grades)

@@ -29,6 +29,8 @@ namespace SecondTask {
         double getAverageGradeBySubject(const std::string& subject);
         std::vector<ThirdTask::StudentStats> getTopStudents(int limit);
 
+
+        bool batchInsertStudents(const std::vector<StudentWithGrades>& students);
     private:
         sqlite3* _db;
         FourthTask::InputValidator _validator;

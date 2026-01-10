@@ -1,0 +1,2 @@
+D:\Dev\cpp-course\sqlite\x64\Debug\gmock.dll
+D:\Dev\cpp-course\sqlite\sqlite\x64\Debug\sqlite.vcxproj.Up2Date
