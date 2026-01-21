@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="markdown-2-html.vcxproj" />
+  <Project Path="markdown-2-html.vcxproj" Id="4b25216d-d411-4aa2-b537-eca470bf3f87" />
 </Solution>

@@ -127,7 +127,45 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddCodeLineAction.cpp" />
+    <ClCompile Include="AddTextAction.cpp" />
+    <ClCompile Include="EndCodeBlockAction.cpp" />
+    <ClCompile Include="EndParagraphAction.cpp" />
+    <ClCompile Include="HeaderAction.cpp" />
+    <ClCompile Include="HtmlRenderer.cpp" />
+    <ClCompile Include="InlineParser.cpp" />
+    <ClCompile Include="LineAnalyzer.cpp" />
     <ClCompile Include="markdown-2-html.cpp" />
+    <ClCompile Include="MarkdownContext.cpp" />
+    <ClCompile Include="MarkdownFsmTable.cpp" />
+    <ClCompile Include="MarkdownParser.cpp" />
+    <ClCompile Include="StartCodeBlockAction.cpp" />
+    <ClCompile Include="StartParagraphAction.cpp" />
+    <ClCompile Include="TableEndAction.cpp" />
+    <ClCompile Include="TableRowAction.cpp" />
+    <ClCompile Include="TableStartAction.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AddCodeLineAction.h" />
+    <ClInclude Include="AddTextAction.h" />
+    <ClInclude Include="EndCodeBlockAction.h" />
+    <ClInclude Include="EndParagraphAction.h" />
+    <ClInclude Include="FsmTransition.h" />
+    <ClInclude Include="HeaderAction.h" />
+    <ClInclude Include="HtmlRenderer.h" />
+    <ClInclude Include="IFSMAction.h" />
+    <ClInclude Include="InlineParser.h" />
+    <ClInclude Include="LineAnalyzer.h" />
+    <ClInclude Include="LineType.h" />
+    <ClInclude Include="MarkdownContext.h" />
+    <ClInclude Include="MarkdownFsmTable.h" />
+    <ClInclude Include="MarkdownParser.h" />
+    <ClInclude Include="ParserState.h" />
+    <ClInclude Include="StartCodeBlockAction.h" />
+    <ClInclude Include="StartParagraphAction.h" />
+    <ClInclude Include="TableEndAction.h" />
+    <ClInclude Include="TableRowAction.h" />
+    <ClInclude Include="TableStartAction.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

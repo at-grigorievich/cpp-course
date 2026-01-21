@@ -11,10 +11,138 @@
     <Filter Include="include">
       <UniqueIdentifier>{a56d0a1c-8144-46b5-89d8-6dc1af0a3158}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\FSM">
+      <UniqueIdentifier>{9af6422e-0129-4226-ba99-cebe35a77b73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\FSM">
+      <UniqueIdentifier>{3f59883f-e4b0-43e5-ab7f-7dd0ee10c5b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\FSM\Actions">
+      <UniqueIdentifier>{c1baffc0-3282-4e0e-879a-eb74985e77e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\FSM\Actions">
+      <UniqueIdentifier>{a3140e57-83b0-4c94-94ec-6277ec707e46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Parser">
+      <UniqueIdentifier>{686e9ea9-99e9-415a-bb41-b3d97d220d67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Parser">
+      <UniqueIdentifier>{989926b1-7bba-4874-bd17-ab8ddd6199a5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="markdown-2-html.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="MarkdownContext.cpp">
+      <Filter>src\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="StartParagraphAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="AddTextAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="EndParagraphAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="HeaderAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="StartCodeBlockAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="EndCodeBlockAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="AddCodeLineAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="LineAnalyzer.cpp">
+      <Filter>src\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="MarkdownFsmTable.cpp">
+      <Filter>src\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="InlineParser.cpp">
+      <Filter>src\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="MarkdownParser.cpp">
+      <Filter>src\Parser</Filter>
+    </ClCompile>
+    <ClCompile Include="HtmlRenderer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="TableStartAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="TableEndAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="TableRowAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ParserState.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="LineType.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="IFSMAction.h">
+      <Filter>include\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="MarkdownContext.h">
+      <Filter>include\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="HtmlRenderer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="StartParagraphAction.h">
+      <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="AddTextAction.h">
+      <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="EndParagraphAction.h">
+      <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="HeaderAction.h">
+      <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="StartCodeBlockAction.h">
+      <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="EndCodeBlockAction.h">
+      <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="AddCodeLineAction.h">
+      <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="LineAnalyzer.h">
+      <Filter>include\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="FsmTransition.h">
+      <Filter>include\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="MarkdownFsmTable.h">
+      <Filter>include\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="InlineParser.h">
+      <Filter>include\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="MarkdownParser.h">
+      <Filter>include\Parser</Filter>
+    </ClInclude>
+    <ClInclude Include="TableStartAction.h">
+      <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="TableEndAction.h">
+      <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="TableRowAction.h">
+      <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "markdown-2-html\\x64\\Debug\\HtmlRenderer.obj",
+            "outputs": [
+                "markdown-2-html\\x64\\Debug\\HtmlRenderer.h_B4F0CB82939F03DC.ifc.dt.module.json",
+                "markdown-2-html\\x64\\Debug\\HtmlRenderer.h_B4F0CB82939F03DC.ifc.dt.d.json",
+                "markdown-2-html\\x64\\Debug\\HtmlRenderer.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "C:\\Users\\strat\\Documents\\Dev\\cpp-course\\markdown-2-html\\HtmlRenderer.h",
+                    "source-path": "c:\\users\\strat\\documents\\dev\\cpp-course\\markdown-2-html\\htmlrenderer.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}
