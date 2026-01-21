@@ -1,10 +1,16 @@
 ﻿
 #include <iostream>
 #include "MarkdownParser.h"
+#include "MarkdownFileData.h"
+#include <windows.h>
 
 int main()
 {
     using namespace MarkdownToHtml;
+
+    setlocale(LC_ALL, "ru-RU");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
 
     MarkdownParser parser;
 
@@ -49,6 +55,11 @@ int main()
         "\n"
         "End with **bold**, *italic*, and `inline code` in one line.\n";
 
+    
+    MarkdownFileData markdownSrc = MarkdownFileData::FromUserInput();
+    std::string htmlResult = parser.Parse(markdownSrc);
 
-    std::cout << parser.Parse(md);
+    if (htmlResult.empty()) return 1;
+
+    MarkdownFileData::SaveAsHtml(markdownSrc, htmlResult);
 }

@@ -157,6 +157,7 @@
     <ClInclude Include="InlineParser.h" />
     <ClInclude Include="LineAnalyzer.h" />
     <ClInclude Include="LineType.h" />
+    <ClInclude Include="MarkdownFileData.h" />
     <ClInclude Include="MarkdownContext.h" />
     <ClInclude Include="MarkdownFsmTable.h" />
     <ClInclude Include="MarkdownParser.h" />

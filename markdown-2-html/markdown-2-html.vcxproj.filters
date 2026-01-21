@@ -29,6 +29,9 @@
     <Filter Include="src\Parser">
       <UniqueIdentifier>{989926b1-7bba-4874-bd17-ab8ddd6199a5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\Markdown">
+      <UniqueIdentifier>{84e424a9-0858-4142-af76-9775ee330cf1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="markdown-2-html.cpp">
@@ -143,6 +146,9 @@
     </ClInclude>
     <ClInclude Include="TableRowAction.h">
       <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="MarkdownFileData.h">
+      <Filter>include\Markdown</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
