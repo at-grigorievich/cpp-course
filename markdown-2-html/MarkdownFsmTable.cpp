@@ -10,6 +10,9 @@
 #include "TableStartAction.h"
 #include "TableEndAction.h"
 #include "TableRowAction.h"
+#include "StartListAction.h"
+#include "EndListAction.h"
+#include "AddListItemAction.h"
 
 namespace MarkdownToHtml {
     MarkdownFsmTable::MarkdownFsmTable() {
@@ -88,7 +91,7 @@ namespace MarkdownToHtml {
             }
         };
 
-        // Table → Empty → None (конец таблицы)
+        // Table → Empty → None
         _table[{ParserState::Table, LineType::Empty}] = {
             ParserState::None,
             {
@@ -96,7 +99,7 @@ namespace MarkdownToHtml {
             }
         };
 
-        // Table → Text → None (если после таблицы обычный текст)
+        // Table → Text → None
         _table[{ParserState::Table, LineType::Text}] = {
             ParserState::None,
             {
@@ -104,6 +107,64 @@ namespace MarkdownToHtml {
                 std::make_shared<StartParagraphAction>(),
                 std::make_shared<AddTextAction>()
             }
+        };
+
+        // None → UnorderedListItem → UnorderedList
+        _table[{ParserState::None, LineType::UnorderedListItem}] = {
+            ParserState::UnorderedList,
+            {
+                std::make_shared<StartListAction>("<ul>"),
+                std::make_shared<AddListItemAction>()
+            }
+        };
+
+        // UnorderedList → UnorderedListItem → UnorderedList
+        _table[{ParserState::UnorderedList, LineType::UnorderedListItem}] = {
+            ParserState::UnorderedList,
+            { std::make_shared<AddListItemAction>() }
+        };
+
+        // UnorderedList → Empty → None
+        _table[{ParserState::UnorderedList, LineType::Empty}] = {
+            ParserState::None,
+            { std::make_shared<EndListAction>("</ul>") }
+        };
+
+        // UnorderedList → Text → Paragraph
+        _table[{ParserState::UnorderedList, LineType::Text}] = {
+            ParserState::Paragraph,
+            { std::make_shared<EndListAction>("</ul>"),
+              std::make_shared<StartParagraphAction>(),
+              std::make_shared<AddTextAction>() }
+        };
+
+        // None → OrderedListItem → OrderedList
+        _table[{ParserState::None, LineType::OrderedListItem}] = {
+            ParserState::OrderedList,
+            {
+                std::make_shared<StartListAction>("<ol>"),
+                std::make_shared<AddListItemAction>()
+            }
+        };
+
+        // OrderedList → OrderedListItem → OrderedList
+        _table[{ParserState::OrderedList, LineType::OrderedListItem}] = {
+            ParserState::OrderedList,
+            { std::make_shared<AddListItemAction>() }
+        };
+
+        // OrderedList → Empty → Non
+        _table[{ParserState::OrderedList, LineType::Empty}] = {
+            ParserState::None,
+            { std::make_shared<EndListAction>("</ol>") }
+        };
+
+        // OrderedList → Text → Paragraph
+        _table[{ParserState::OrderedList, LineType::Text}] = {
+            ParserState::Paragraph,
+            { std::make_shared<EndListAction>("</ol>"),
+              std::make_shared<StartParagraphAction>(),
+              std::make_shared<AddTextAction>() }
         };
     }
 

@@ -85,6 +85,15 @@
     <ClCompile Include="TableRowAction.cpp">
       <Filter>src\FSM\Actions</Filter>
     </ClCompile>
+    <ClCompile Include="StartListAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="EndListAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
+    <ClCompile Include="AddListItemAction.cpp">
+      <Filter>src\FSM\Actions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ParserState.h">
@@ -149,6 +158,15 @@
     </ClInclude>
     <ClInclude Include="MarkdownFileData.h">
       <Filter>include\Markdown</Filter>
+    </ClInclude>
+    <ClInclude Include="StartListAction.h">
+      <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="EndListAction.h">
+      <Filter>include\FSM\Actions</Filter>
+    </ClInclude>
+    <ClInclude Include="AddListItemAction.h">
+      <Filter>include\FSM\Actions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

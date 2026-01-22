@@ -8,6 +8,8 @@ namespace MarkdownToHtml {
 		CodeFence,
 		Text,
 		TableDivider,
-		TableRow
+		TableRow,
+		UnorderedListItem,
+		OrderedListItem 
 	};
 }

@@ -7,5 +7,7 @@ namespace MarkdownToHtml {
 		Paragraph,
 		CodeBlock,
 		Table,
+		UnorderedList,
+		OrderedList
 	};
 }

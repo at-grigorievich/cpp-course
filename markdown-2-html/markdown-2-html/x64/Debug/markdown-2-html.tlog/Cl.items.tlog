@@ -1,6 +1,8 @@
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\AddCodeLineAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\AddCodeLineAction.obj
+C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\AddListItemAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\AddListItemAction.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\AddTextAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\AddTextAction.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\EndCodeBlockAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\EndCodeBlockAction.obj
+C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\EndListAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\EndListAction.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\EndParagraphAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\EndParagraphAction.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\HeaderAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\HeaderAction.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\HtmlRenderer.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\HtmlRenderer.obj
@@ -11,6 +13,7 @@ C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\MarkdownContext.cpp;C:\U
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\MarkdownFsmTable.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\MarkdownFsmTable.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\MarkdownParser.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\MarkdownParser.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\StartCodeBlockAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\StartCodeBlockAction.obj
+C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\StartListAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\StartListAction.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\StartParagraphAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\StartParagraphAction.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\TableEndAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\TableEndAction.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\TableRowAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\TableRowAction.obj
