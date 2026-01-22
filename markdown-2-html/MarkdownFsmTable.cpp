@@ -150,13 +150,17 @@ namespace MarkdownToHtml {
         // OrderedList → OrderedListItem → OrderedList
         _table[{ParserState::OrderedList, LineType::OrderedListItem}] = {
             ParserState::OrderedList,
-            { std::make_shared<AddListItemAction>() }
+            { 
+                std::make_shared<AddListItemAction>() 
+            }
         };
 
         // OrderedList → Empty → Non
         _table[{ParserState::OrderedList, LineType::Empty}] = {
             ParserState::None,
-            { std::make_shared<EndListAction>("</ol>") }
+            { 
+                std::make_shared<EndListAction>("</ol>") 
+            }
         };
 
         // OrderedList → Text → Paragraph

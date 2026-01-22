@@ -6,8 +6,9 @@ namespace MarkdownToHtml {
         if (line.empty())
             return LineType::Empty;
 
-        if (line.rfind("```", 0) == 0)
+        if (line.find("```") != std::string::npos) {
             return LineType::CodeFence;
+        }
 
         if (line[0] == '#')
             return LineType::Header;
