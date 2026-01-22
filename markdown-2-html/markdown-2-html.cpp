@@ -3,6 +3,7 @@
 #include "MarkdownParser.h"
 #include "MarkdownFileData.h"
 #include <windows.h>
+#include <future>
 
 int main()
 {
@@ -56,10 +57,25 @@ int main()
         "End with **bold**, *italic*, and `inline code` in one line.\n";
 
     
-    MarkdownFileData markdownSrc = MarkdownFileData::FromUserInput();
-    std::string htmlResult = parser.Parse(markdownSrc);
+    std::vector<MarkdownFileData> markdownSrcSet = MarkdownFileData::FromUserInput();
 
-    if (htmlResult.empty()) return 1;
+    std::vector<std::future<void>> tasks;
 
-    MarkdownFileData::SaveAsHtml(markdownSrc, htmlResult);
+    for (const MarkdownFileData mdFile : markdownSrcSet) {
+        tasks.emplace_back(std::async(std::launch::async, [mdFile]() {
+            std::ifstream in(mdFile.fullPath);
+            std::stringstream buffer;
+            buffer << in.rdbuf();
+
+            MarkdownParser parser;
+            std::string html = parser.Parse(buffer.str());
+
+            if (!html.empty())
+                MarkdownFileData::SaveAsHtml(mdFile, html);
+            }));
+    }
+
+    for (auto& t : tasks) {
+        t.get();
+    }
 }
