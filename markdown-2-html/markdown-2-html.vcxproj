@@ -152,6 +152,7 @@
     <ClInclude Include="AddCodeLineAction.h" />
     <ClInclude Include="AddListItemAction.h" />
     <ClInclude Include="AddTextAction.h" />
+    <ClInclude Include="DebugAction.h" />
     <ClInclude Include="EndCodeBlockAction.h" />
     <ClInclude Include="EndListAction.h" />
     <ClInclude Include="EndParagraphAction.h" />

@@ -13,6 +13,7 @@
 #include "StartListAction.h"
 #include "EndListAction.h"
 #include "AddListItemAction.h"
+#include "DebugAction.h"
 
 namespace MarkdownToHtml {
     MarkdownFsmTable::MarkdownFsmTable() {
@@ -138,6 +139,14 @@ namespace MarkdownToHtml {
               std::make_shared<AddTextAction>() }
         };
 
+        //UnorderedList -> Code Fence -> Code Block
+        _table[{ParserState::UnorderedList, LineType::CodeFence}] = {
+            ParserState::CodeBlock,
+            {
+                std::make_shared<StartCodeBlockAction>()
+            }
+        };
+
         // None → OrderedListItem → OrderedList
         _table[{ParserState::None, LineType::OrderedListItem}] = {
             ParserState::OrderedList,
@@ -169,6 +178,14 @@ namespace MarkdownToHtml {
             { std::make_shared<EndListAction>("</ol>"),
               std::make_shared<StartParagraphAction>(),
               std::make_shared<AddTextAction>() }
+        };
+
+        //OrderedList -> Code Fence -> Code Block
+        _table[{ParserState::OrderedList, LineType::CodeFence}] = {
+            ParserState::CodeBlock,
+            {
+                std::make_shared<StartCodeBlockAction>()
+            }
         };
     }
 
