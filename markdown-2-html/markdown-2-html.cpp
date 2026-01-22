@@ -5,17 +5,22 @@
 #include <windows.h>
 #include <future>
 
+#define SINGLETHREAD_MODE 1
+#define MULTITHREAD_MODE 1
+
+using namespace MarkdownToHtml;
+
+int ChooseThreadMode();
+void InvokeSingleParsing(const std::vector<MarkdownFileData>& markdownSrcSet);
+void InvokeParallelParsing(const std::vector<MarkdownFileData>& markdownSrcSet);
+
 int main()
 {
-    using namespace MarkdownToHtml;
-
     setlocale(LC_ALL, "ru-RU");
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    MarkdownParser parser;
-
-    std::string md =
+    /*std::string md =
         "# Main Title\n"
         "\n"
         "This is a simple paragraph with **bold text**, *italic text*, and `inline code`.\n"
@@ -54,11 +59,51 @@ int main()
         "\n"
         "Empty lines above separate blocks.\n"
         "\n"
-        "End with **bold**, *italic*, and `inline code` in one line.\n";
+        "End with **bold**, *italic*, and `inline code` in one line.\n";*/
 
-    
     std::vector<MarkdownFileData> markdownSrcSet = MarkdownFileData::FromUserInput();
+    int selectedThreadMode = ChooseThreadMode();
 
+    if (selectedThreadMode == SINGLETHREAD_MODE) {
+        InvokeSingleParsing(markdownSrcSet);
+    }
+    else {
+        InvokeParallelParsing(markdownSrcSet);
+    }
+}
+
+int ChooseThreadMode() {
+    while (true) {
+        std::cout << "Select mode: 1 = single-thread, 2 = multi-thread: ";
+        int mode = 0;
+        std::cin >> mode;
+        std::cin.ignore();
+
+        if (mode == 1) return SINGLETHREAD_MODE;
+        if (mode == 2) return MULTITHREAD_MODE;
+
+        std::cout << "Invalid mode selected.\n";
+    } 
+}
+
+void InvokeSingleParsing(const std::vector<MarkdownFileData>& markdownSrcSet) {
+    using namespace MarkdownToHtml;
+
+    MarkdownParser parser;
+
+    for (const MarkdownFileData& mdFile : markdownSrcSet) {
+        std::ifstream in(mdFile.fullPath);
+        std::stringstream buffer;
+        buffer << in.rdbuf();
+
+        std::string html = parser.Parse(buffer.str());
+
+        if (html.empty() == false)
+            MarkdownFileData::SaveAsHtml(mdFile, html, false);
+    }
+}
+
+void InvokeParallelParsing(const std::vector<MarkdownFileData>& markdownSrcSet) {
     std::vector<std::future<void>> tasks;
 
     for (const MarkdownFileData mdFile : markdownSrcSet) {
@@ -70,8 +115,8 @@ int main()
             MarkdownParser parser;
             std::string html = parser.Parse(buffer.str());
 
-            if (!html.empty())
-                MarkdownFileData::SaveAsHtml(mdFile, html);
+            if (html.empty() == false)
+                MarkdownFileData::SaveAsHtml(mdFile, html, true);
             }));
     }
 

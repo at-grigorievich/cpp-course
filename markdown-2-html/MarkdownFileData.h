@@ -69,7 +69,7 @@ namespace MarkdownToHtml {
             }
         }
 
-        static void SaveAsHtml(const MarkdownFileData& mdFile, const std::string& htmlContent) {
+        static void SaveAsHtml(const MarkdownFileData& mdFile, const std::string& htmlContent, bool isParallel) {
             std::filesystem::path htmlPath = std::filesystem::path(mdFile.directory) / (mdFile.filename + ".html");
 
             std::ofstream outFile(htmlPath);
@@ -79,10 +79,14 @@ namespace MarkdownToHtml {
 
             outFile << htmlContent;
 
+            if(isParallel)
             {
                 std::lock_guard<std::mutex> lock(coutMutex);
                 std::cout << "HTML saved successfully to path: " << htmlPath << std::endl;
+                return;
             }
+
+            std::cout << "HTML saved successfully to path: " << htmlPath << std::endl;
         }
 	};
 }
