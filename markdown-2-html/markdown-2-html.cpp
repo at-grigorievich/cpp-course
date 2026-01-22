@@ -6,13 +6,29 @@
 #include <future>
 
 #define SINGLETHREAD_MODE 1
-#define MULTITHREAD_MODE 1
+#define MULTITHREAD_MODE 2
+
+#define USE_CHRONO
 
 using namespace MarkdownToHtml;
+
+template<typename Func, typename... Args>
+void MeasureAndInvoke(const std::string& taskName, Func&& func, Args&&... args) {
+    auto start = std::chrono::high_resolution_clock::now();
+
+    std::invoke(std::forward<Func>(func), std::forward<Args>(args)...);
+
+    auto end = std::chrono::high_resolution_clock::now();
+    auto durationMs = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+    std::cout << taskName << " executed in " << durationMs.count() << " ms\n";
+}
 
 int ChooseThreadMode();
 void InvokeSingleParsing(const std::vector<MarkdownFileData>& markdownSrcSet);
 void InvokeParallelParsing(const std::vector<MarkdownFileData>& markdownSrcSet);
+void InvokeSingleParsingWithChrono(const std::vector<MarkdownFileData>& markdownSrcSet);
+void InvokeParallelParsingWithChrono(const std::vector<MarkdownFileData>& markdownSrcSet);
 
 int main()
 {
@@ -20,49 +36,18 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    /*std::string md =
-        "# Main Title\n"
-        "\n"
-        "This is a simple paragraph with **bold text**, *italic text*, and `inline code`.\n"
-        "\n"
-        "## Subtitle\n"
-        "\n"
-        "Another paragraph here.\n"
-        "\n"
-        "### Smaller Title\n"
-        "\n"
-        "- This list item is ignored by current parser (optional future feature)\n"
-        "- Another list item\n"
-        "\n"
-        "HTML block example:\n"
-        "\n"
-        "<h2>HTML Header Block</h2>\n"
-        "<p>Some HTML paragraph inside Markdown.</p>\n"
-        "\n"
-        "Table Example:\n"
-        "\n"
-        "| Name   | Age | Country |\n"
-        "|--------|-----|---------|\n"
-        "| Alice  | 28  | UK      |\n"
-        "| Bob    | 35  | US      |\n"
-        "| Charlie| 22  | NL      |\n"
-        "\n"
-        "Code block:\n"
-        "\n"
-        "```\n"
-        "#include <iostream>\n"
-        "int main() {\n"
-        "    std::cout << \"Hello, Markdown!\" << std::endl;\n"
-        "    return 0;\n"
-        "}\n"
-        "```\n"
-        "\n"
-        "Empty lines above separate blocks.\n"
-        "\n"
-        "End with **bold**, *italic*, and `inline code` in one line.\n";*/
-
     std::vector<MarkdownFileData> markdownSrcSet = MarkdownFileData::FromUserInput();
     int selectedThreadMode = ChooseThreadMode();
+
+#ifdef USE_CHRONO
+    if (selectedThreadMode == SINGLETHREAD_MODE) {
+        MeasureAndInvoke("Single-thread parsing", InvokeSingleParsing, markdownSrcSet);
+    }
+    else {
+        MeasureAndInvoke("Multi-thread parsing", InvokeParallelParsing, markdownSrcSet);
+    }
+    return 0;
+#endif 
 
     if (selectedThreadMode == SINGLETHREAD_MODE) {
         InvokeSingleParsing(markdownSrcSet);
@@ -70,6 +55,8 @@ int main()
     else {
         InvokeParallelParsing(markdownSrcSet);
     }
+
+    return 0;
 }
 
 int ChooseThreadMode() {
@@ -84,6 +71,24 @@ int ChooseThreadMode() {
 
         std::cout << "Invalid mode selected.\n";
     } 
+}
+
+void InvokeSingleParsingWithChrono(const std::vector<MarkdownFileData>& markdownSrcSet) {
+    auto start = std::chrono::high_resolution_clock::now();
+    InvokeSingleParsing(markdownSrcSet);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    std::chrono::duration<double> sec = end - start;
+    std::cout << "Method executed in " << sec.count() << " s\n";
+}
+
+void InvokeParallelParsingWithChrono(const std::vector<MarkdownFileData>& markdownSrcSet) {
+    auto start = std::chrono::high_resolution_clock::now();
+    InvokeParallelParsing(markdownSrcSet);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    std::chrono::duration<double> sec = end - start;
+    std::cout << "Method executed in " << sec.count() << " s\n";
 }
 
 void InvokeSingleParsing(const std::vector<MarkdownFileData>& markdownSrcSet) {
