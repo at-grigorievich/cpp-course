@@ -12,6 +12,7 @@ C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html.cpp;C:\U
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\MarkdownContext.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\MarkdownContext.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\MarkdownFsmTable.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\MarkdownFsmTable.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\MarkdownParser.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\MarkdownParser.obj
+C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\MarkdownToHtmlParserBasicsTest.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\MarkdownToHtmlParserBasicsTest.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\StartCodeBlockAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\StartCodeBlockAction.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\StartListAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\StartListAction.obj
 C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\StartParagraphAction.cpp;C:\Users\strat\Documents\Dev\cpp-course\markdown-2-html\markdown-2-html\x64\Debug\StartParagraphAction.obj

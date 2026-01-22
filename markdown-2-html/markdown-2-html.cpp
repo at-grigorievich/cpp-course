@@ -4,11 +4,13 @@
 #include "MarkdownFileData.h"
 #include <windows.h>
 #include <future>
+#include <gtest/gtest.h>
 
 #define SINGLETHREAD_MODE 1
 #define MULTITHREAD_MODE 2
 
 #define USE_CHRONO
+#define RUN_TESTS
 
 using namespace MarkdownToHtml;
 
@@ -30,11 +32,17 @@ void InvokeParallelParsing(const std::vector<MarkdownFileData>& markdownSrcSet);
 void InvokeSingleParsingWithChrono(const std::vector<MarkdownFileData>& markdownSrcSet);
 void InvokeParallelParsingWithChrono(const std::vector<MarkdownFileData>& markdownSrcSet);
 
-int main()
+int main(int argc, char** argv)
 {
     setlocale(LC_ALL, "ru-RU");
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+
+#ifdef RUN_TESTS
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+#endif
+
 
     std::vector<MarkdownFileData> markdownSrcSet = MarkdownFileData::FromUserInput();
     int selectedThreadMode = ChooseThreadMode();

@@ -94,6 +94,9 @@
     <ClCompile Include="AddListItemAction.cpp">
       <Filter>src\FSM\Actions</Filter>
     </ClCompile>
+    <ClCompile Include="MarkdownToHtmlParserBasicsTest.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ParserState.h">
@@ -168,5 +171,9 @@
     <ClInclude Include="AddListItemAction.h">
       <Filter>include\FSM\Actions</Filter>
     </ClInclude>
+    <ClInclude Include="DebugAction.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
