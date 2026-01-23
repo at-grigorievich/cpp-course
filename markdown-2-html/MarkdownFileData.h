@@ -81,8 +81,8 @@ namespace MarkdownToHtml {
 
             if(isParallel)
             {
-                std::lock_guard<std::mutex> lock(coutMutex);
-                std::cout << "HTML saved successfully to path: " << htmlPath << std::endl;
+                //std::lock_guard<std::mutex> lock(coutMutex);
+                //std::cout << "HTML saved successfully to path: " << htmlPath << std::endl;
                 return;
             }
 

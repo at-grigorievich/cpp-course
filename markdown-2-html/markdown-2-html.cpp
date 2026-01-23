@@ -10,7 +10,7 @@
 #define MULTITHREAD_MODE 2
 
 #define USE_CHRONO
-#define RUN_TESTS
+//#define RUN_TESTS
 
 using namespace MarkdownToHtml;
 
@@ -135,5 +135,6 @@ void InvokeParallelParsing(const std::vector<MarkdownFileData>& markdownSrcSet) 
 
     for (auto& t : tasks) {
         t.get();
+        std::cout << "All Htmls succesfully saved\n";
     }
 }
